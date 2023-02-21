@@ -1,4 +1,4 @@
-package com.codeup.codeupspringblog;
+package com.codeup.codeupspringblog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +66,28 @@ public class HelloController {
 
         model.addAttribute("dogs", dogs);
         return "dogPark";
+    }
+
+    @GetMapping("/roll-dice")
+    public String rollDice(Model model) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+
+        model.addAttribute("numbers", numbers);
+        return "roll-dice";
+    }
+
+    @GetMapping("/roll-dice/1")
+    public String roll1() {
+        var randomNum = Math.floor(Math.random() * 6) + 1;
+        if (randomNum == 1) {
+            return "roll1";
+        }
+        return "roll1";
     }
 }
